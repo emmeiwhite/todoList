@@ -2,10 +2,18 @@ import React,{Component} from 'react';
 import {connect} from 'react-redux';
 
 class SelectedBook extends Component{
+   
    render(){
+    if(!this.props.book){
+        return (
+            <div>Please select a book </div>
+        )
+
+    }
        return(
            <div className="col-md-8">
-                {this.props.selectedBook.title}
+                <h2>BOOK Details are as follows:</h2>
+                <h3>{this.props.book.title}</h3>
             </div>
        )
    }
@@ -14,7 +22,7 @@ class SelectedBook extends Component{
 
 const mSTP = (state)=>{
     return {
-        selectedBook:state.currentBook
+        book:state.activeBook
     }
 }
 export default connect(mSTP)(SelectedBook);
