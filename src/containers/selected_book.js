@@ -13,7 +13,8 @@ class SelectedBook extends Component{
        return(
            <div className="col-md-8">
                 <h2>BOOK Details are as follows:</h2>
-                <h3>{this.props.book.title}</h3>
+                <h4>NAME : {this.props.book.title}</h4>
+                <h4>PAGES: {this.props.book.pages}</h4>
             </div>
        )
    }

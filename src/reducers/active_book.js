@@ -1,5 +1,5 @@
 // We will initially show up any book
-const initialState =  {id:1,title:'The Great Warriors'};
+const initialState =  {id:1,title:'The Great Warriors',pages:299};
 
 
 export default function(state = initialState,action){
