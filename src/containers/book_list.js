@@ -2,12 +2,15 @@
 // Often known as the Smart Component !!!
 import React,{ Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators} from 'redux';
+
+import selectBook from './../store/index'; // Action Creator Being Imported !!!
 
 class BookList extends Component{
     renderList(){
         return this.props.books.map((book)=>{
             return ( // Directly returning JSX
-                <li className="list-group-item" key={book.id}>{book.title}</li>
+                <li className="list-group-item" key={book.id} onClick={this.props.bookSelected}>{book.title}</li>
             )
         })
     }
@@ -30,4 +33,10 @@ const mSTP = (state)=>{
     }
 }
 
-export default connect(mSTP)(BookList); //connect : Higher Order Component !!!
+const mDTP = (dispatch) =>{
+    return bindActionCreators({
+        bookSelected:selectBook
+    },dispatch); // dispatch is a method, it makes sure that the actions reach all the reducers
+}
+
+export default connect(mSTP,mDTP)(BookList); //connect : Higher Order Component !!!
